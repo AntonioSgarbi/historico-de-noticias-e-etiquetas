@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/desafio_api?createDatabaseIfNotExist=True&jdbcCompliantTruncation=false
+    username: root
+    password: root
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+  mail:
+    protocol: smtp
+    host: smtp-mail.outlook.com
+    port: 587
+    username: antonio.sgarbi@hotmail.com
+    password: 4ngul4r@java
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  sendgrid:
+    api-key: api-key
+    from-mail: antonio.sgarbi@hotmail.com
+    from-name: Fish Stock
+
+springdoc:
+  api-docs:
+    path: /swagger
+
+security:
+  url-cors:
+    - "http://localhost:8080"
+  token:
+    issuer: antonio
+
+    access_secret: my_access_secret
+    access_expiration: 1800000
+
+    refresh_secret: my_refresh_secret
+    refresh_expiration: 86400000
