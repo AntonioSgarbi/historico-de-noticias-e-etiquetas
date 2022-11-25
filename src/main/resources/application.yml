@@ -20,6 +20,10 @@ spring:
           starttls:
             enable: true
             required: true
+  profiles:
+    active: @active.profile@ #actions
+#    active: test
+#    active: default
 
 springdoc:
   api-docs:

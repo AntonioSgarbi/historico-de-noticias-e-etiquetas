@@ -85,7 +85,7 @@ public class CustomerServiceImpl implements CustomerService {
             tag.setAccessCount(tag.getAccessCount() + 1);
             this.tagService.save(tag);
 
-            IntegrationDTO integrationDTO = this.integrationService.query(tag.getValue(), today);
+            IntegrationDTO integrationDTO = this.integrationService.query(tag.getTag(), today);
 
             if (integrationDTO.getList() != null) {
                 for (NewsIntegrationDTO news : integrationDTO.getList()) {

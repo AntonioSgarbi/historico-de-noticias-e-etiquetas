@@ -20,7 +20,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Tag createTagIfNotExists(String value) {
-        Optional<Tag> optional = this.tagRepository.findByValue(value);
+        Optional<Tag> optional = this.tagRepository.findByTag(value);
 
         Tag model;
 
@@ -29,7 +29,7 @@ public class TagServiceImpl implements TagService {
             model.setAccessCount(model.getAccessCount() + 1);
         } else {
             model = new Tag();
-            model.setValue(value);
+            model.setTag(value);
             model.setAccessCount(1L);
         }
 

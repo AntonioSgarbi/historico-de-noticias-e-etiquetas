@@ -45,25 +45,25 @@ public class AdminServiceImpl implements AdminService {
         this.accessTagRegisterService = accessTagRegisterService;
         this.integrationService = integrationService;
 
-        if (this.userRepository.findAll().isEmpty()) {
-            String pass = "senha12";
-
-            String passE = SecurityConfig.passwordEncoder().encode(pass);
-
-            User user = new User(null, "admin", passE, "ADMIN");
-
-            UserCustomer user1 = new UserCustomer();
-            user1.setEmail("user@mail.com");
-            user1.setRole("USER");
-            user1.setPassword(passE);
-
-
-
-            this.userRepository.save(user);
-            this.userRepository.save(user1);
-
-            System.out.println("\n\n\n banco preenchido \n\n\n");
-        }
+//        if (this.userRepository.findAll().isEmpty()) {
+//            String pass = "senha12";
+//
+//            String passE = SecurityConfig.passwordEncoder().encode(pass);
+//
+//            User user = new User(null, "admin", passE, "ADMIN");
+//
+//            UserCustomer user1 = new UserCustomer();
+//            user1.setEmail("user@mail.com");
+//            user1.setRole("USER");
+//            user1.setPassword(passE);
+//
+//
+//
+//            this.userRepository.save(user);
+//            this.userRepository.save(user1);
+//
+//            System.out.println("\n\n\n banco preenchido \n\n\n");
+//        }
 
     }
 
@@ -153,11 +153,11 @@ public class AdminServiceImpl implements AdminService {
 
             stringBuilder
                     .append("<h2>- ")
-                    .append(tag.getValue())
+                    .append(tag.getTag())
                     .append("\n")
                     .append("</h2>");
 
-            IntegrationDTO integrationDTO = this.integrationService.query(tag.getValue(), dateToday);
+            IntegrationDTO integrationDTO = this.integrationService.query(tag.getTag(), dateToday);
 
             List<NewsIntegrationDTO> newsTodayList = new LinkedList<>();
 

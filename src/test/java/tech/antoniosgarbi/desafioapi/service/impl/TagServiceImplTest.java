@@ -36,7 +36,7 @@ class TagServiceImplTest {
     void createTagIfNotExists1() {
         Tag tag = Tag.builder().id(1L).accessCount(10L).build();
 
-        when(this.tagRepository.findByValue(anyString()))
+        when(this.tagRepository.findByTag(anyString()))
                 .thenReturn(Optional.of(tag));
 
         when(this.tagRepository.save(any(Tag.class))).then(iv -> {
@@ -50,7 +50,7 @@ class TagServiceImplTest {
     @Test
     @DisplayName("Should create tag when search tag not registered")
     void createTagIfNotExists2() {
-        when(this.tagRepository.findByValue(anyString())).thenReturn(Optional.empty());
+        when(this.tagRepository.findByTag(anyString())).thenReturn(Optional.empty());
         when(this.tagRepository.save(any(Tag.class))).then(iv -> {
             return iv.getArgument(0);
         });

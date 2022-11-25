@@ -8,7 +8,7 @@ import tech.antoniosgarbi.desafioapi.model.Tag;
 import java.util.Optional;
 
 public interface TagRepository extends JpaRepository<Tag, Long> {
-    Optional<Tag> findByValue(String email);
+    Optional<Tag> findByTag(String email);
 
     Page<Tag> findAllByOrderByAccessCountDesc(Pageable pageable);
 }

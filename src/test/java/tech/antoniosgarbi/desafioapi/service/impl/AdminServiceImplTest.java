@@ -171,8 +171,8 @@ class AdminServiceImplTest {
         String date = "30/30/2022";
         when(this.integrationService.getDateToday()).thenReturn(date);
 
-        Tag tag1 = Tag.builder().id(1L).value("tag1").accessCount(10L).build();
-        Tag tag2 = Tag.builder().id(2L).value("tag2").accessCount(20L).build();
+        Tag tag1 = Tag.builder().id(1L).tag("tag1").accessCount(10L).build();
+        Tag tag2 = Tag.builder().id(2L).tag("tag2").accessCount(20L).build();
 
         UserCustomer user1  = new UserCustomer();
         user1.setId(1L);
@@ -211,8 +211,8 @@ class AdminServiceImplTest {
         String date = "30/30/2022";
         when(this.integrationService.getDateToday()).thenReturn(date);
 
-        Tag tag1 = Tag.builder().id(1L).value("tag1").accessCount(10L).build();
-        Tag tag2 = Tag.builder().id(2L).value("tag2").accessCount(20L).build();
+        Tag tag1 = Tag.builder().id(1L).tag("tag1").accessCount(10L).build();
+        Tag tag2 = Tag.builder().id(2L).tag("tag2").accessCount(20L).build();
 
         UserCustomer user1  = new UserCustomer();
         user1.setId(1L);

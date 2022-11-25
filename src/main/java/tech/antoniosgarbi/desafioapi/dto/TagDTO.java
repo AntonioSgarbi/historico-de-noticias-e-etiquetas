@@ -16,7 +16,7 @@ public class TagDTO {
 
     public TagDTO(Tag entity) {
         this.id = entity.getId();
-        this.value = entity.getValue();
+        this.value = entity.getTag();
         this.accessCount = entity.getAccessCount();
     }
 

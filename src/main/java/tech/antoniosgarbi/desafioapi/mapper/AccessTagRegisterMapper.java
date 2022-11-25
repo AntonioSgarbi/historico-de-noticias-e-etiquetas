@@ -9,7 +9,7 @@ public class AccessTagRegisterMapper {
         AccessTagRegisterDTO dto  = new AccessTagRegisterDTO();
 
         dto.setId(model.getId());
-        dto.setTag(model.getTag().getValue());
+        dto.setTag(model.getTag().getTag());
         dto.setDate(model.getDate());
 
         return dto;
