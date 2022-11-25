@@ -9,6 +9,7 @@ import tech.antoniosgarbi.desafioapi.model.Tag;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TagDTO {
+
     private Long id;
     private  String value;
     private Long accessCount;

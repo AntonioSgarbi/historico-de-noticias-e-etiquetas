@@ -12,4 +12,6 @@ public interface TagService {
 
     Page<TagDTO> findAllOrderByAccessCount(Pageable pageable);
 
+    Tag save(Tag tag);
+
 }

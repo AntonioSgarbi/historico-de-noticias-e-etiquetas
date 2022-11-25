@@ -18,4 +18,10 @@ public interface AdminService {
 
     Page<TagDTO> findAllTagsOrderByAccessCount(Pageable pageable);
 
+    String sendNewsToUsers();
+
+    void delete(Long userId);
+
+    Page<UserDTO> listUsers(Pageable pageable);
+
 }

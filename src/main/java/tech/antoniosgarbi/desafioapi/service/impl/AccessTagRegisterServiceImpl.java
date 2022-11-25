@@ -23,14 +23,17 @@ public class AccessTagRegisterServiceImpl implements AccessTagRegisterService {
     public Page<AccessTagRegisterDTO> findTagsHistoryByUser(UserCustomer user, Pageable pageable) {
         Page<AccessTagRegister> pageAccessTagRegister = this.accessTagRepository.findAllByUser(user, pageable);
 
-        AccessTagRegisterMapper mapper = AccessTagRegisterMapper.INSTANCE;
-
-        return pageAccessTagRegister.map(mapper::toDTO);
+        return pageAccessTagRegister.map(AccessTagRegisterMapper::toDTO);
     }
 
     @Override
     public void save(AccessTagRegister accessTagRegister) {
         this.accessTagRepository.save(accessTagRegister);
+    }
+
+    @Override
+    public void deleteHistoryFromUser(UserCustomer user) {
+        this.accessTagRepository.deleteAllByUser(user);
     }
 
 }

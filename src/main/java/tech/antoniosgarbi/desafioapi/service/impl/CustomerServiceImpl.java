@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tech.antoniosgarbi.desafioapi.dto.AccessTagRegisterDTO;
 import tech.antoniosgarbi.desafioapi.dto.IntegrationDTO;
 import tech.antoniosgarbi.desafioapi.dto.NewsDTO;
+import tech.antoniosgarbi.desafioapi.dto.NewsIntegrationDTO;
 import tech.antoniosgarbi.desafioapi.exception.NewsNotFoundException;
 import tech.antoniosgarbi.desafioapi.model.AccessTagRegister;
 import tech.antoniosgarbi.desafioapi.model.Tag;
@@ -15,6 +16,7 @@ import tech.antoniosgarbi.desafioapi.model.UserCustomer;
 import tech.antoniosgarbi.desafioapi.service.*;
 
 import java.security.Principal;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -71,6 +73,32 @@ public class CustomerServiceImpl implements CustomerService {
         this.userCustomerService.removeTagFromUser(tagEntity, principal.getName());
 
         return "tag removida";
+    }
+
+    @Override
+    public List<NewsDTO> getTodayNews(Principal principal) {
+        UserCustomer user = this.userCustomerService.findModelByEmail(principal.getName());
+        List<NewsDTO> newsTodayList = new LinkedList<>();
+        String today = this.integrationService.getDateToday();
+
+        for (Tag tag: user.getRegisteredTags()) {
+            tag.setAccessCount(tag.getAccessCount() + 1);
+            this.tagService.save(tag);
+
+            IntegrationDTO integrationDTO = this.integrationService.query(tag.getValue(), today);
+
+            if (integrationDTO.getList() != null) {
+                for (NewsIntegrationDTO news : integrationDTO.getList()) {
+                    if (news.getDate().equals(today)) {
+                        newsTodayList.add(new NewsDTO(news));
+                    }
+                }
+            }
+        }
+        if(!newsTodayList.isEmpty()) {
+            return newsTodayList;
+        }
+        throw new NewsNotFoundException("Não há noticias para suas etiquetas hoje!");
     }
 
 }

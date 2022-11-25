@@ -7,4 +7,6 @@ public interface IntegrationService {
 
     IntegrationDTO query(String query, String date);
 
+    String getDateToday();
+
 }

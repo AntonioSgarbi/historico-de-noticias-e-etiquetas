@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class NewsDTO {
+
     private String title;
     private String link;
     private String date;
@@ -13,4 +14,5 @@ public class NewsDTO {
         this.link = integrationDTO.getLink();
         this.date = integrationDTO.getDatetime();
     }
+
 }

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NewsIntegrationDTO {
+
     private String title;
     private String description;
     private String href;

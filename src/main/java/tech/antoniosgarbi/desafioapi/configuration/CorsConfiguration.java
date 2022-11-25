@@ -1,5 +1,6 @@
 package tech.antoniosgarbi.desafioapi.configuration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -10,8 +11,9 @@ import java.util.List;
 
 @Configuration
 public class CorsConfiguration {
-//    @Value("${security.url-cors}")
-    private List<String> URLS_FROTEND = List.of("http://localhost:8080");
+    @Value("${security.url-cors}")
+    private List<String> URLS_FROTEND;
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

@@ -1,4 +1,4 @@
-package tech.antoniosgarbi.desafioapi.exception.handler;
+package tech.antoniosgarbi.desafioapi.handler;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

@@ -13,4 +13,6 @@ public interface AccessTagRegisterService {
 
     void save(AccessTagRegister accessTagRegister);
 
+    void deleteHistoryFromUser(UserCustomer user);
+
 }

@@ -41,4 +41,9 @@ public class TagServiceImpl implements TagService {
         return this.tagRepository.findAllByOrderByAccessCountDesc(pageable).map(TagDTO::new);
     }
 
+    @Override
+    public Tag save(Tag tag) {
+        return this.tagRepository.save(tag);
+    }
+
 }

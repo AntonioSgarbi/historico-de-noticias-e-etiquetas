@@ -19,4 +19,5 @@ public interface CustomerService {
 
     String removeTag(Principal principal, String tag);
 
+    List<NewsDTO> getTodayNews(Principal principal);
 }

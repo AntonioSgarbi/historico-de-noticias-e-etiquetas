@@ -14,7 +14,10 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
-import tech.antoniosgarbi.desafioapi.dto.*;
+import tech.antoniosgarbi.desafioapi.dto.AccessTagRegisterDTO;
+import tech.antoniosgarbi.desafioapi.dto.IntegrationDTO;
+import tech.antoniosgarbi.desafioapi.dto.NewsDTO;
+import tech.antoniosgarbi.desafioapi.dto.NewsIntegrationDTO;
 import tech.antoniosgarbi.desafioapi.exception.NewsNotFoundException;
 import tech.antoniosgarbi.desafioapi.model.Tag;
 import tech.antoniosgarbi.desafioapi.model.UserCustomer;
@@ -25,8 +28,10 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -118,7 +123,10 @@ class CustomerServiceImplTest {
     @Test
     @DisplayName("Should return Page<AccessTagRegisterDTO> when receives principal and pageable")
     void getTagsHistory1() {
-        AccessTagRegisterDTO tag = new AccessTagRegisterDTO(1L, "tag1", new Date());
+        AccessTagRegisterDTO tag = new AccessTagRegisterDTO();
+        tag.setId(1L);
+        tag.setTag("tag1");
+        tag.setDate(new Date());
 
         List<AccessTagRegisterDTO> list = List.of(tag);
         UserCustomer userCustomer = new UserCustomer();
@@ -148,6 +156,7 @@ class CustomerServiceImplTest {
     }
 
     @Test
+    @DisplayName("Should return message \"tag removida\" when successfull")
     void removeTag() {
         when(this.tagService.createTagIfNotExists(anyString())).thenReturn(new Tag());
 
@@ -156,5 +165,63 @@ class CustomerServiceImplTest {
         String response = this.underTest.removeTag(principal, "tag");
 
         assertEquals("tag removida", response);
+    }
+
+    @Test
+    @DisplayName("Should throw New NotFoundException when user tags have no new news today")
+    void getTodayNews1() {
+        UserCustomer userCustomer = new UserCustomer();
+        userCustomer.setId(1L);
+        Tag tag = new Tag(1l, "tag", 1L);
+        userCustomer.setRegisteredTags(Set.of(tag));
+
+        when(this.userCustomerService.findModelByEmail(anyString())).thenReturn(userCustomer);
+
+        when(this.integrationService.getDateToday()).thenReturn("30/30/2022");
+
+        when(this.tagService.save(any(Tag.class))).thenReturn(new Tag());
+
+        IntegrationDTO integrationDTO = new IntegrationDTO();
+        NewsIntegrationDTO newsIntegrationDTO= new NewsIntegrationDTO();
+        newsIntegrationDTO.setDate("any date");
+        integrationDTO.setList(List.of(newsIntegrationDTO));
+
+        when(this.integrationService.query(anyString(), anyString())).thenReturn(integrationDTO);
+
+        UserDetails user = new User("username", "password", new ArrayList<>());
+        Principal principal = new UsernamePasswordAuthenticationToken(user, null);
+
+        assertThrows(NewsNotFoundException.class, () -> this.underTest.getTodayNews(principal));
+    }
+
+    @Test
+    @DisplayName("Should return List<NewsDTO> when user tags have new news today")
+    void getTodayNews2() {
+        UserCustomer userCustomer = new UserCustomer();
+        userCustomer.setId(1L);
+        Tag tag = new Tag(1l, "tag", 1L);
+        userCustomer.setRegisteredTags(Set.of(tag));
+
+        when(this.userCustomerService.findModelByEmail(anyString())).thenReturn(userCustomer);
+
+        String date = "30/30/2022";
+        when(this.integrationService.getDateToday()).thenReturn(date);
+
+        when(this.tagService.save(any(Tag.class))).thenReturn(new Tag());
+
+        IntegrationDTO integrationDTO = new IntegrationDTO();
+        NewsIntegrationDTO newsIntegrationDTO= new NewsIntegrationDTO();
+        newsIntegrationDTO.setDate(date);
+        integrationDTO.setList(List.of(newsIntegrationDTO));
+
+        when(this.integrationService.query(anyString(), anyString())).thenReturn(integrationDTO);
+
+        UserDetails user = new User("username", "password", new ArrayList<>());
+        Principal principal = new UsernamePasswordAuthenticationToken(user, null);
+
+        List<NewsDTO> response = this.underTest.getTodayNews(principal);
+
+        assertEquals(newsIntegrationDTO.getTitle(), response.get(0).getTitle());
+        assertEquals(newsIntegrationDTO.getLink(), response.get(0).getLink());
     }
 }

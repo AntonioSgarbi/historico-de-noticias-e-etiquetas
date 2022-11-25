@@ -1,19 +1,18 @@
 package tech.antoniosgarbi.desafioapi.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
 import tech.antoniosgarbi.desafioapi.dto.AccessTagRegisterDTO;
 import tech.antoniosgarbi.desafioapi.model.AccessTagRegister;
 
-@Mapper
-public abstract class AccessTagRegisterMapper {
-    public static final AccessTagRegisterMapper INSTANCE = Mappers.getMapper(AccessTagRegisterMapper.class);
+public class AccessTagRegisterMapper {
 
-    @Mappings({
-            @Mapping(target = "id", source = "id"),
-            @Mapping(target = "tag", expression = "java(model.getTag().getValue())"),
-            @Mapping(target = "date", source = "date")})
-    public abstract AccessTagRegisterDTO toDTO(AccessTagRegister model);
+    public static AccessTagRegisterDTO toDTO(AccessTagRegister model) {
+        AccessTagRegisterDTO dto  = new AccessTagRegisterDTO();
+
+        dto.setId(model.getId());
+        dto.setTag(model.getTag().getValue());
+        dto.setDate(model.getDate());
+
+        return dto;
+    }
+
 }

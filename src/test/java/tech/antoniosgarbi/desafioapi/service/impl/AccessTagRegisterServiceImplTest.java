@@ -29,6 +29,7 @@ class AccessTagRegisterServiceImplTest {
     @InjectMocks
     private AccessTagRegisterServiceImpl underTest;
 
+
     @Test
     @DisplayName("Should return Page of AccessTagRegisterDTO when receives valid user")
     void findTagsHistoryByUserId2() {
@@ -61,4 +62,11 @@ class AccessTagRegisterServiceImplTest {
         verify(this.accessTagRepository).save(any(AccessTagRegister.class));
     }
 
+    @Test
+    @DisplayName("Should delete all when receives user")
+    void deleteHistoryFromUser() {
+        this.underTest.deleteHistoryFromUser(new UserCustomer());
+
+        verify(this.accessTagRepository).deleteAllByUser(any());
+    }
 }

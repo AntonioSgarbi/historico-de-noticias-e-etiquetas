@@ -1,4 +1,4 @@
-package tech.antoniosgarbi.desafioapi.configuration;
+package tech.antoniosgarbi.desafioapi.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class HandlerAuthenticationError implements AuthenticationEntryPoint {
+public class AuthenticationHandlerError implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {

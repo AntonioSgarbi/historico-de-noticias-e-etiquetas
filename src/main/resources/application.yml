@@ -6,13 +6,13 @@ spring:
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   mail:
     protocol: smtp
     host: smtp-mail.outlook.com
     port: 587
     username: antonio.sgarbi@hotmail.com
-    password: 4ngul4r@java
+    password: thym3l34f@flux
     properties:
       mail:
         smtp:
@@ -20,18 +20,13 @@ spring:
           starttls:
             enable: true
             required: true
-  sendgrid:
-    api-key: api-key
-    from-mail: antonio.sgarbi@hotmail.com
-    from-name: Fish Stock
 
 springdoc:
   api-docs:
     path: /swagger
 
 security:
-  url-cors:
-    - "http://localhost:8080"
+  url-cors: http://localhost:8080 http://localhost:8081
   token:
     issuer: antonio
 
