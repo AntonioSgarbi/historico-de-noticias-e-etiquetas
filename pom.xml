@@ -19,6 +19,9 @@
         <spring-cloud.version>2021.0.5</spring-cloud.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 
+        <sonar.organization>antoniosgarbi</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
         <!--CONTAINER BUILD CONFIG-->
         <MAIL_PROFILE_SENDER>sendrid</MAIL_PROFILE_SENDER>
 
