@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity(name = "tb_access_tag_register")
 @Data
 @NoArgsConstructor
 public class AccessTagRegister {

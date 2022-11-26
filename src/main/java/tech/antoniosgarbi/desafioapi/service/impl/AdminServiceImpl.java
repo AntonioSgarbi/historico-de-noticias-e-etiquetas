@@ -1,5 +1,6 @@
 package tech.antoniosgarbi.desafioapi.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +23,7 @@ import java.util.List;
 
 
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
     private final UserRepository userRepository;
@@ -31,41 +32,7 @@ public class AdminServiceImpl implements AdminService {
     private final MailSpringServiceImpl mailSpringService;
     private final TagService tagService;
     private final AccessTagRegisterService accessTagRegisterService;
-
     private final IntegrationService integrationService;
-
-    public AdminServiceImpl(UserRepository userRepository, UserCustomerRepository userCustomerRepository,
-                            GeneratorService generatorService, MailSpringServiceImpl mailSpringService,
-                            TagService tagService, AccessTagRegisterService accessTagRegisterService, IntegrationService integrationService) {
-        this.userRepository = userRepository;
-        this.userCustomerRepository = userCustomerRepository;
-        this.generatorService = generatorService;
-        this.mailSpringService = mailSpringService;
-        this.tagService = tagService;
-        this.accessTagRegisterService = accessTagRegisterService;
-        this.integrationService = integrationService;
-
-//        if (this.userRepository.findAll().isEmpty()) {
-//            String pass = "senha12";
-//
-//            String passE = SecurityConfig.passwordEncoder().encode(pass);
-//
-//            User user = new User(null, "admin", passE, "ADMIN");
-//
-//            UserCustomer user1 = new UserCustomer();
-//            user1.setEmail("user@mail.com");
-//            user1.setRole("USER");
-//            user1.setPassword(passE);
-//
-//
-//
-//            this.userRepository.save(user);
-//            this.userRepository.save(user1);
-//
-//            System.out.println("\n\n\n banco preenchido \n\n\n");
-//        }
-
-    }
 
 
     @Override
@@ -139,7 +106,6 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Page<UserDTO> listUsers(Pageable pageable) {
-        System.out.println(this.userRepository.findAll(pageable).getContent());
         return this.userRepository.findAll(pageable).map(UserMapper::toDTO);
     }
 

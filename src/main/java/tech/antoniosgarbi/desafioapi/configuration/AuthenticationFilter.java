@@ -1,5 +1,8 @@
 package tech.antoniosgarbi.desafioapi.configuration;
 
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,14 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
+@RequiredArgsConstructor
 public class AuthenticationFilter extends OncePerRequestFilter {
+
     private final TokenService tokenService;
     private final UserDetailsService userDetailsService;
-
-    public AuthenticationFilter(TokenService tokenService, UserDetailsService userDetailsService) {
-        this.tokenService = tokenService;
-        this.userDetailsService = userDetailsService;
-    }
+    private static final Logger loggerInstance = LoggerFactory.getLogger(AuthenticationFilter.class);
 
 
     @Override
@@ -39,9 +40,9 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
         try {
             if(jwt == null) {
-                System.out.println("Token nulo");
+                loggerInstance.info("Token nulo");
             } else if (!this.tokenService.validateAccessToken(jwt)) {
-                System.out.println("Token expirado ou invalido");
+                loggerInstance.error("Token expirado ou invalido");
             } else {
                 String username = tokenService.getUsernameFromToken(jwt);
 
@@ -55,7 +56,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception e) {
-            System.out.println("Falha ao autenticar!");
+            loggerInstance.error("Falha ao autenticar!");
         }
 
         filterChain.doFilter(request, response);

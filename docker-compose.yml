@@ -9,20 +9,20 @@ services:
     links:
       - db
     environment:
-      - MAIL_PROFILE_SENDER=sendgrid
+      - GENERATE_ADM_EMAIL= #INSERT YOUR VALUES
+      - GENERATE_ADM_PASSWORD= #INSERT YOUR VALUES
+      - GENERATE_USER_EMAIL= #INSERT YOUR VALUES
+      - GENERATE_USER_PASSWORD= #INSERT YOUR VALUES
       - DB_HOST=db
       - DB_PORT=3306
       - DB_USER=root
       - DB_PASSWORD=root
       - DB_NAME=desafio-api
-      - SENDGRID_API_KEY=api_key
-      - SENDGRID_FROM_EMAIL=from_email
-      - SENDGRID_FROM_NAME=from_name
       - MAIL_HOST=smtp-mail.outlook.com
       - MAIL_PORT=587
       - MAIL_PROTOCOL=smtp
-      - MAIL_USERNAME=username
-      - MAIL_PASSWORD=password
+      - MAIL_USERNAME= #INSERT YOUR VALUES
+      - MAIL_PASSWORD= #INSERT YOUR VALUES
       - TOKEN_ISSUER=issuer
       - JWT_ACCESS_SECRET=my_access_secret
       - JWT_ACCESS_EXPIRATION_TIME=1800000

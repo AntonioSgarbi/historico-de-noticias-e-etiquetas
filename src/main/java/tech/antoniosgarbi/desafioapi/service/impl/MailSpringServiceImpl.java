@@ -1,10 +1,13 @@
 package tech.antoniosgarbi.desafioapi.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import tech.antoniosgarbi.desafioapi.configuration.AuthenticationFilter;
 
 import javax.mail.internet.MimeMessage;
 
@@ -16,17 +19,12 @@ public class MailSpringServiceImpl {
     @Value("${spring.mail.username}")
     private String from;
     private final JavaMailSender emailSender;
+    private static final Logger loggerInstance = LoggerFactory.getLogger(MailSpringServiceImpl.class);
 
 
     public void sendText(String to, String subject, String body) {
         MimeMessage message = emailSender.createMimeMessage();
 
-        this.prepare(message, to, subject, body);
-
-        emailSender.send(message);
-    }
-
-    private void prepare(MimeMessage message, String to, String subject, String body) {
         MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
 
         try {
@@ -34,7 +32,10 @@ public class MailSpringServiceImpl {
             helper.setFrom(from);
             helper.setSubject(subject);
             helper.setText(body, true);
-        } catch (Exception e) { }
+            emailSender.send(message);
+        } catch (Exception e) {
+            loggerInstance.error(e.getMessage());
+        }
 
     }
 

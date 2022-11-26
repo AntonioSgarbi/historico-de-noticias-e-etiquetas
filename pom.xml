@@ -23,7 +23,11 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <!--CONTAINER BUILD CONFIG-->
-        <MAIL_PROFILE_SENDER>sendrid</MAIL_PROFILE_SENDER>
+        <GENERATE_ADM_EMAIL>adm-email</GENERATE_ADM_EMAIL>
+        <GENERATE_ADM_PASSWORD>adm-pass</GENERATE_ADM_PASSWORD>
+
+        <GENERATE_USER_EMAIL>user-email</GENERATE_USER_EMAIL>
+        <GENERATE_USER_PASSWORD>user-pass</GENERATE_USER_PASSWORD>
 
         <DB_HOST>localhost</DB_HOST>
         <DB_PORT>3306</DB_PORT>
@@ -36,10 +40,6 @@
         <MAIL_PROTOCOL>smtp</MAIL_PROTOCOL>
         <MAIL_USERNAME>username</MAIL_USERNAME>
         <MAIL_PASSWORD>password</MAIL_PASSWORD>
-
-        <SENDGRID_API_KEY>sendgrid-api-key</SENDGRID_API_KEY>
-        <SENDGRID_FROM_MAIL>sendgrid-from-mail</SENDGRID_FROM_MAIL>
-        <SENDGRID_FROM_NAME>sendgrid-from-name</SENDGRID_FROM_NAME>
 
         <TOKEN_ISSUER>desafio-api</TOKEN_ISSUER>
         <JWT_ACCESS_SECRET>my_access_secret</JWT_ACCESS_SECRET>
@@ -207,7 +207,11 @@
                             <port>8080</port>
                         </ports>
                         <environment>
-                            <MAIL_PROFILE_SENDER>${MAIL_PROFILE_SENDER}</MAIL_PROFILE_SENDER>
+                            <GENERATE_ADM_EMAIL>${GENERATE_ADM_EMAIL}</GENERATE_ADM_EMAIL>
+                            <GENERATE_ADM_PASSWORD>${GENERATE_ADM_PASSWORD}</GENERATE_ADM_PASSWORD>
+
+                            <GENERATE_USER_EMAIL>${GENERATE_USER_EMAIL}</GENERATE_USER_EMAIL>
+                            <GENERATE_USER_PASSWORD>${GENERATE_USER_PASSWORD}</GENERATE_USER_PASSWORD>
 
                             <DB_HOST>${DB_HOST}</DB_HOST>
                             <DB_PORT>${DB_PORT}</DB_PORT>
@@ -221,10 +225,6 @@
                             <MAIL_USERNAME>${MAIL_USERNAME}</MAIL_USERNAME>
                             <MAIL_PASSWORD>${MAIL_PASSWORD}</MAIL_PASSWORD>
 
-                            <SENDGRID_API_KEY>${SENDGRID_API_KEY}</SENDGRID_API_KEY>
-                            <SENDGRID_FROM_MAIL>${SENDGRID_FROM_MAIL}</SENDGRID_FROM_MAIL>
-                            <SENDGRID_FROM_NAME>${SENDGRID_FROM_NAME}</SENDGRID_FROM_NAME>
-
                             <TOKEN_ISSUER>${TOKEN_ISSUER}</TOKEN_ISSUER>
                             <JWT_ACCESS_SECRET>${JWT_ACCESS_SECRET}</JWT_ACCESS_SECRET>
                             <JWT_ACCESS_EXPIRATION_TIME>${JWT_ACCESS_EXPIRATION_TIME}</JWT_ACCESS_EXPIRATION_TIME>
@@ -234,7 +234,10 @@
                             <URL_CORS>${URL_CORS}</URL_CORS>
                         </environment>
                         <args>
-                            <arg>--spring.profiles.active=${MAIL_PROFILE_SENDER}</arg>
+                            <arg>--generate.adm.email=${GENERATE_ADM_EMAIL}</arg>
+                            <arg>--generate.adm.password=${GENERATE_ADM_PASSWORD}</arg>
+                            <arg>--generate.user.email=${GENERATE_USER_EMAIL}</arg>
+                            <arg>--generate.user.password=${GENERATE_USER_PASSWORD}</arg>
 
                             <arg>--spring.datasource.username=${DB_USER}</arg>
                             <arg>--spring.datasource.password=${DB_PASSWORD}</arg>

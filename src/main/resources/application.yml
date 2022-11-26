@@ -11,8 +11,8 @@ spring:
     protocol: smtp
     host: smtp-mail.outlook.com
     port: 587
-    username: antonio.sgarbi@hotmail.com
-    password: thym3l34f@flux
+    username: username@mail.com
+    password: password
     properties:
       mail:
         smtp:
@@ -20,8 +20,8 @@ spring:
           starttls:
             enable: true
             required: true
-  profiles:
-    active: @active.profile@ #actions
+#  profiles:
+#    active: @active.profile@ #actions
 #    active: test
 #    active: default
 
@@ -39,3 +39,12 @@ security:
 
     refresh_secret: my_refresh_secret
     refresh_expiration: 86400000
+
+generate:
+  admin:
+    email: email1@hotmail.com
+    password: senha123
+
+  user:
+    email: email2@gmail.com
+    password: senha123
