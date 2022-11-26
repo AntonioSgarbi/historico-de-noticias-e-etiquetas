@@ -36,13 +36,13 @@ public class RestHandlerError extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        RequestMethodNotSupportedExceptionDetails notSupportedExceptionDetails = new RequestMethodNotSupportedExceptionDetails(ex.getMessage());
+        RequestMethodNotSupportedExceptionDetails notSupportedExceptionDetails = new RequestMethodNotSupportedExceptionDetails();
         return handleExceptionInternal(ex, notSupportedExceptionDetails, headers, status, request);
     }
 
     @Override
     protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        NotFoundExceptionDetails notFoundDetails = new NotFoundExceptionDetails(ex.getMessage());
+        NotFoundExceptionDetails notFoundDetails = new NotFoundExceptionDetails();
         return handleExceptionInternal(ex, notFoundDetails, headers, status, request);
     }
 

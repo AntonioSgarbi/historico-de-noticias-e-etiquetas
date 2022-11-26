@@ -6,6 +6,9 @@ import org.mockito.InjectMocks;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 class GeneratorServiceImplTest {
 
@@ -18,7 +21,7 @@ class GeneratorServiceImplTest {
         Random random = new Random();
         for (int i = 0; i <100; i++) {
             int length = random.nextInt(5, 20);
-            assert this.underTest.generate((byte) length).toString().length() == length;
+            assertEquals(this.underTest.generate((byte) length).toString().length(), length);
         }
     }
 }

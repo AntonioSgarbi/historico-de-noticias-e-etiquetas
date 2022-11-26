@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public abstract class AbstractException extends RuntimeException {
     private final LocalDateTime moment;
 
-    public AbstractException(String message) {
+    protected AbstractException(String message) {
         super(message);
         this.moment = LocalDateTime.now();
     }

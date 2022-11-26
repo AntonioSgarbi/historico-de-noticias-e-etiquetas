@@ -1,7 +1,7 @@
 package tech.antoniosgarbi.desafioapi.exception.details;
 
 public class NotFoundExceptionDetails extends ExceptionDetails {
-    public NotFoundExceptionDetails(String details) {
+    public NotFoundExceptionDetails() {
         super(
                 "NotFound Exception",
                 404,

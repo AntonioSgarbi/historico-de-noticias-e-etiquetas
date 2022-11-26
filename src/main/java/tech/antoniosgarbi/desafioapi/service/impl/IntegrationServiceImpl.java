@@ -37,7 +37,7 @@ public class IntegrationServiceImpl implements IntegrationService {
                 throw new DateException("A data passada deve estar no formato dd/mm/aaaa ou a busca deve ser feita sem o parametro de data");
             }
         }
-        return this.makeRequest(query.replaceAll(" ", ""), date);
+        return this.makeRequest(query.replace(" ", ""), date);
     }
 
     @Override

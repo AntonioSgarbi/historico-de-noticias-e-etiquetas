@@ -13,7 +13,7 @@ public abstract class ExceptionDetails {
     protected String developerMessage;
     protected LocalDateTime timestamp;
 
-    public ExceptionDetails(String title, int status, String details,
+    protected ExceptionDetails(String title, int status, String details,
                             String developerMessage) {
         this.title = title;
         this.status = status;

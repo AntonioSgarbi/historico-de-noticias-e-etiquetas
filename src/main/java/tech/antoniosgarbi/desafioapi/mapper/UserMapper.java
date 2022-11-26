@@ -6,6 +6,8 @@ import tech.antoniosgarbi.desafioapi.model.UserCustomer;
 
 public class UserMapper {
 
+    private UserMapper() {}
+
     public static User toUser(UserDTO userDTO) {
         User user;
 

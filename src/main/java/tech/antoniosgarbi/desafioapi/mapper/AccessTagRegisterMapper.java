@@ -5,6 +5,8 @@ import tech.antoniosgarbi.desafioapi.model.AccessTagRegister;
 
 public class AccessTagRegisterMapper {
 
+    private AccessTagRegisterMapper() {}
+
     public static AccessTagRegisterDTO toDTO(AccessTagRegister model) {
         AccessTagRegisterDTO dto  = new AccessTagRegisterDTO();
 

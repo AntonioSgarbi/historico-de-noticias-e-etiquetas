@@ -1,7 +1,7 @@
 package tech.antoniosgarbi.desafioapi.exception.details;
 
 public class RequestMethodNotSupportedExceptionDetails extends ExceptionDetails {
-    public RequestMethodNotSupportedExceptionDetails(String details) {
+    public RequestMethodNotSupportedExceptionDetails() {
         super(
                 "Method not allowed Exception",
                 405,
