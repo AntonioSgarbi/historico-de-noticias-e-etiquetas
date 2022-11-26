@@ -32,9 +32,14 @@ public class MailSpringServiceImpl {
             helper.setFrom(from);
             helper.setSubject(subject);
             helper.setText(body, true);
+        } catch (Exception e) {
+            loggerInstance.error("mail error on helper {}", e.getMessage());
+        }
+        try {
             emailSender.send(message);
         } catch (Exception e) {
-            loggerInstance.error(e.getMessage());
+            loggerInstance.error("mail error on send {}", e.getMessage());
+
         }
 
     }
