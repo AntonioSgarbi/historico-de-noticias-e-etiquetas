@@ -6,32 +6,32 @@ services:
     container_name: desafio
     depends_on:
       - db
-    links:
-      - db
+    ports:
+      - "8080:8080"
     environment:
-      - GENERATE_ADM_EMAIL= #INSERT YOUR VALUES
-      - GENERATE_ADM_PASSWORD= #INSERT YOUR VALUES
-      - GENERATE_USER_EMAIL= #INSERT YOUR VALUES
-      - GENERATE_USER_PASSWORD= #INSERT YOUR VALUES
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_USER=root
-      - DB_PASSWORD=root
-      - DB_NAME=desafio-api
-      - MAIL_HOST=smtp-mail.outlook.com
-      - MAIL_PORT=587
-      - MAIL_PROTOCOL=smtp
-      - MAIL_USERNAME= #INSERT YOUR VALUES
-      - MAIL_PASSWORD= #INSERT YOUR VALUES
-      - TOKEN_ISSUER=issuer
-      - JWT_ACCESS_SECRET=my_access_secret
-      - JWT_ACCESS_EXPIRATION_TIME=1800000
-      - JWT_REFRESH_SECRET=my_refresh_secret
-      - JWT_REFRESH_EXPIRATION_TIME=86400000
-      - URL_CORS=http://localhost:8080
+      GENERATE_ADM_EMAIL: #INSERT YOUR VALUES
+      GENERATE_ADM_PASSWORD: #INSERT YOUR VALUES
+      GENERATE_USER_EMAIL: #INSERT YOUR VALUES
+      GENERATE_USER_PASSWORD: #INSERT YOUR VALUES
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: desafio_api
+      MAIL_HOST: smtp-mail.outlook.com
+      MAIL_PORT: 587
+      MAIL_PROTOCOL: smtp
+      MAIL_USERNAME: #INSERT YOUR VALUES
+      MAIL_PASSWORD: #INSERT YOUR VALUES
+      TOKEN_ISSUER: issuer
+      JWT_ACCESS_SECRET: my_access_secret
+      JWT_ACCESS_EXPIRATION_TIME: 1800000
+      JWT_REFRESH_SECRET: my_refresh_secret
+      JWT_REFRESH_EXPIRATION_TIME: 86400000
+      URL_CORS: http://localhost:8080
   db:
     image: 'mysql:8.0.31'
     container_name: db
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=desafio-api
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: desafio_api
