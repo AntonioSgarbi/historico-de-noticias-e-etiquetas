@@ -1,17 +1,15 @@
-# API-Desafio
+# News - History & Tag
 
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=coverage)](https://sonarcloud.io/component_measures?id=AntonioSgarbi_desafio-api-GFT&metric=coverage)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=ncloc)](https://sonarcloud.io/dashboard?id=AntonioSgarbi_desafio-api-GFT)
 [<img src="https://img.shields.io/badge/dockerhub-image-success.svg?logo=docker">](https://hub.docker.com/r/antoniosk/desafio-api)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_historico-de-noticias-e-etiquetas&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_historico-de-noticias-e-etiquetas)
 
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_desafio-api-GFT)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_desafio-api-GFT)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_desafio-api-GFT)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_desafio-api-GFT)
-[![Sqale_Index](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_desafio-api-GFT)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_desafio-api-GFT)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=bugs)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_desafio-api-GFT)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_desafio-api-GFT&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_desafio-api-GFT)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_historico-de-noticias-e-etiquetas&metric=coverage)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_historico-de-noticias-e-etiquetas)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_historico-de-noticias-e-etiquetas&metric=bugs)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_historico-de-noticias-e-etiquetas)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_historico-de-noticias-e-etiquetas&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_historico-de-noticias-e-etiquetas)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_historico-de-noticias-e-etiquetas&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_historico-de-noticias-e-etiquetas)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_historico-de-noticias-e-etiquetas&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_historico-de-noticias-e-etiquetas)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=AntonioSgarbi_historico-de-noticias-e-etiquetas&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=AntonioSgarbi_historico-de-noticias-e-etiquetas)
+
 
 ## Descrição
 
