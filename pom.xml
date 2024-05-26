@@ -165,7 +165,7 @@
                         <image>eclipse-temurin:17-jre-alpine</image>
                     </from>
                     <to>
-                        <image>antoniosk/desafio-api</image>
+                        <image>antoniosk/historico-de-noticias-e-etiquetas</image>
                         <tags>
                             <tag>${project.version}</tag>
                             <tag>latest</tag>
