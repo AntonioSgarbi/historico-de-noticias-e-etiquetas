@@ -55,7 +55,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Verifica o projeto com Maven e Jacoco
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=AntonioSgarbi_desafio-api-GFT org.jacoco:jacoco-maven-plugin:prepare-agent -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml  --file pom.xml -Dactive.profile=test
   build-prod:
